@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Hilo que genera números primos en un rango y los agrega a la lista.
-public class GeneradorPrimos extends Thread {
+public class PrimeGenerator extends Thread {
 
     private PrimesList listaPrimos;
     private int inicio;
@@ -13,12 +13,12 @@ public class GeneradorPrimos extends Thread {
     private List<Integer> propios = new ArrayList<>(); // Lista local
 
     // Constructor Vacío.
-    public GeneradorPrimos() {
+    public PrimeGenerator() {
 
     }
 
     // Constructor.
-    public GeneradorPrimos(PrimesList listaPrimos, int inicio, int fin) {
+    public PrimeGenerator(PrimesList listaPrimos, int inicio, int fin) {
         this.listaPrimos = listaPrimos;
         this.inicio = inicio;
         this.fin = fin;
@@ -49,6 +49,7 @@ public class GeneradorPrimos extends Thread {
     }
 
     // Se agregara solo si es primo y no duplicado.
+    @Override
     public void run() {
         for (int i = inicio; i <= fin; i++) {
             if (isPrime(i)) {

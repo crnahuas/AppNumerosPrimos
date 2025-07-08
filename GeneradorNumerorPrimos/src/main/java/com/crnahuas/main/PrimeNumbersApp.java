@@ -1,18 +1,18 @@
 package com.crnahuas.main;
 
-import GeneradorPrimos.GeneradorPrimos;
+import GeneradorPrimos.PrimeGenerator;
 import ListaPrimos.PrimesList;
 
 // Clase principal que inicia varios hilos y muestra resultados.
-public class GeneradorNumerosPrimos {
+public class PrimeNumbersApp {
 
     public static void main(String[] args) {
        PrimesList primesList = new PrimesList(); 
        
         // Crear hilos con distintos rangos
-        GeneradorPrimos h1 = new GeneradorPrimos(primesList, 1, 1000);
-        GeneradorPrimos h2 = new GeneradorPrimos(primesList, 1001, 2000);
-        GeneradorPrimos h3 = new GeneradorPrimos(primesList, 2001, 3000);
+        PrimeGenerator h1 = new PrimeGenerator(primesList, 1, 1000);
+        PrimeGenerator h2 = new PrimeGenerator(primesList, 1001, 2000);
+        PrimeGenerator h3 = new PrimeGenerator(primesList, 2001, 3000);
         
         // Asignar nombres a los hilos
         h1.setName("Hilo 1");
@@ -56,7 +56,7 @@ public class GeneradorNumerosPrimos {
     }
     
     // Método para mostrar resumen de un hilo
-    private static void mostrarResumenHilo(GeneradorPrimos hilo) {
+    private static void mostrarResumenHilo(PrimeGenerator hilo) {
         System.out.println("\n" + hilo.getName() + ": encontró " + hilo.getPrimes().size() + " primos.");
         System.out.println("Primeros 10 encontrados:");
         for (int i = 0; i < Math.min(10, hilo.getPrimes().size()); i++) {

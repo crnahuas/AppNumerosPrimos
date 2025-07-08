@@ -3,10 +3,10 @@ package ListaPrimos;
 import java.util.ArrayList;
 
 // Lista personalizada para almacenar solo números primos únicos.
-public class ListaPrimos extends ArrayList<Integer> {
+public class PrimesList extends ArrayList<Integer> {
 
     // Verifica si un número es primo
-    private boolean esPrimo(int number) {
+    private boolean isPrime(int number) {
         if (number <= 1) {
             return false;
         }
@@ -28,7 +28,7 @@ public class ListaPrimos extends ArrayList<Integer> {
     // Agrega números primos sin duplicados.
     @Override
     public synchronized boolean add(Integer number) {
-        if (!esPrimo(number)) {
+        if (!isPrime(number)) {
             throw new IllegalArgumentException("Número no primo.");
         }
         if (this.contains(number)) {
@@ -40,7 +40,7 @@ public class ListaPrimos extends ArrayList<Integer> {
     // Elimina solo si es número primo.
     @Override
     public synchronized boolean remove(Object number) {
-        if (number instanceof Integer && esPrimo((Integer) number)) {
+        if (number instanceof Integer && isPrime((Integer) number)) {
             return super.remove(number);
         } else {
             throw new IllegalArgumentException("No se puede eliminar: no es primo.");
@@ -48,7 +48,7 @@ public class ListaPrimos extends ArrayList<Integer> {
     }
 
     // Devuelve la cantidad de primos almacenados
-    public int getCantidadPrimos() {
+    public int getPrimesCount() {
         return this.size();
     }
 
